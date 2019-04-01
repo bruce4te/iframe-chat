@@ -6,3 +6,4 @@
   ![alt text](dragdrop.png "Logo Title Text 1")
 * Messages typed in one window are distributed to all windows
 * New added windows are announced in the chat. 
+* See demo [here (netlify hosted static files)](https://practical-golick-aa04ef.netlify.com/)
