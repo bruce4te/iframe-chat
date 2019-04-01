@@ -1,0 +1,35 @@
+<html>
+    <head>
+            <meta charset="UTF-8">
+            <link rel="stylesheet" type="text/css" href="styles.css">
+            <script src="dragiframe.js"></script>
+            <script type='text/javascript'>
+                function receiveMessage(event){
+                    if (window.document.getElementById('text') !== null) {
+                        if (window.document.getElementById('text').innerHTML !== "") {
+                            var newText = window.document.getElementById('text').innerHTML + "<br/>" + event.data;
+                            window.document.getElementById('text').innerHTML = newText;
+                        } else {
+                            window.document.getElementById('text').innerHTML = event.data;
+                        }
+                    }
+                }
+                function sendMessage(clickedId){
+                    window.parent.postMessage(document.getElementById('msg').value, "*");
+                }
+                window.addEventListener("message", receiveMessage, false);
+                window.addEventListener('DOMContentLoaded', (event) => {
+                    window.document.getElementById('frameName').innerHTML = window.name;
+                });
+            </script>
+    </head>
+    <body onLoad="addHandle(document.getElementById('title'), window);">
+        <div id="title"><p id="frameName">iframe1</p></div>
+        <div id="content">  
+            <div id="text"></div>
+            <div id="bottom">
+                <input id="msg"></input><button id="send" onclick="sendMessage(this.id);">send</button>
+            </div>
+        </div>
+    </body>
+</html>

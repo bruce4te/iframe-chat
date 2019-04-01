@@ -1,0 +1,40 @@
+<html>
+    <head>
+            <meta charset="UTF-8">
+            <link rel="stylesheet" type="text/css" href="styles.css">
+            <script src="dragiframe.js"></script>
+            <script type='text/javascript'>
+                var count = 0;
+                function onClick(){
+                    var iframe = document.createElement('iframe');
+                    count++;
+                    var frameId = "iframe" + count;
+                    iframe.setAttribute("id", frameId);
+                    iframe.setAttribute("name", frameId);
+                    iframe.src = "iframe.html";
+                    document.body.appendChild(iframe);
+                    window.postMessage("[system] - " + frameId + " joined the convo", "*");
+                };
+                function receiveMessage(event){
+                    //if (event.origin !== "http://example.com")
+                    //    return;
+                    var senderName = "";
+                    if (event.source.frameElement !== null){
+                        senderName = event.source.frameElement.id;
+                    }
+                    var frames = window.frames;
+                    for (var i = 0; i < frames.length; i++) {
+                        var msg = event.data;
+                        if (senderName !== ""){
+                            msg = "[" + senderName + "] - " + event.data;
+                        }
+                        frames[i].postMessage(msg, "*");      
+                    }
+                }
+                window.addEventListener("message", receiveMessage, false);
+            </script>
+    </head>
+    <body>
+        <button onclick="onClick()">+</button>
+    </body>
+</html>
