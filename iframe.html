@@ -19,12 +19,12 @@
                 }
                 window.addEventListener("message", receiveMessage, false);
                 window.addEventListener('DOMContentLoaded', (event) => {
-                    window.document.getElementById('frameName').innerHTML = window.name;
+                    window.document.getElementById('title').innerHTML = window.name;
                 });
             </script>
     </head>
     <body onLoad="addHandle(document.getElementById('title'), window);">
-        <div id="title"><p id="frameName">iframe1</p></div>
+        <div id="title">iframe1</div>
         <div id="content">  
             <div id="text"></div>
             <div id="bottom">
