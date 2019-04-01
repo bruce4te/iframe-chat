@@ -16,8 +16,6 @@
                     window.postMessage("[system] - " + frameId + " joined the convo", "*");
                 };
                 function receiveMessage(event){
-                    //if (event.origin !== "http://example.com")
-                    //    return;
                     var senderName = "";
                     if (event.source.frameElement !== null){
                         senderName = event.source.frameElement.id;
@@ -35,6 +33,6 @@
             </script>
     </head>
     <body>
-        <button onclick="onClick()">+</button>
+        <button id="addframe" onclick="onClick()">+</button>
     </body>
 </html>

@@ -2,6 +2,10 @@ body {
   font-family: "Arial", sans-serif;
 }
 
+#addframe {
+  
+}
+
 iframe {
   border-width: 1px;
   margin: 5px;
